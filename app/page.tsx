@@ -1,3 +1,4 @@
+import Hero from "@/components/Hero";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 export default function Home() {
@@ -5,7 +6,7 @@ export default function Home() {
     <div className ="relative w-full h-screen">
       <ParticlesBackground />
       <main className="relative z-10">
-        <h1>Welcome</h1>
+        <Hero />
       </main>
     </div>
 
