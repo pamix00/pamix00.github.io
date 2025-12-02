@@ -53,7 +53,7 @@ const Hero = () => {
 
   return (
     <section className="hero-section flex items-center justify-center min-h-screen">
-        <div className="max-w-6xl w-full">
+        <div className="max-w-6xl w-full px-4">
             <div className='text-center space-y-4'>
                
                <motion.h1
