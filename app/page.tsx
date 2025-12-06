@@ -1,3 +1,4 @@
+import AboutMe from "@/components/AboutMe";
 import Hero from "@/components/Hero";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 
@@ -7,6 +8,7 @@ export default function Home() {
       <ParticlesBackground />
       <main className="relative z-10">
         <Hero />
+        <AboutMe />
       </main>
     </div>
 
