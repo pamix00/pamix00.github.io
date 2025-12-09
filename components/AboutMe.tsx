@@ -9,8 +9,10 @@ type CodeToken = {
 
 const AboutMe = () => {
   const [charsTyped, setCharsTyped] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const terminalRef = useRef(null);
+  const isTerminalInView = useInView(terminalRef, { once: true, amount: 0 });
+  const headerRef = useRef(null);
+  const isHeaderInView = useInView(headerRef, { once: true, amount: 0.5 });
 
   const colors = {
     default: "text-white/80",
@@ -94,7 +96,7 @@ const AboutMe = () => {
 
   // --- LOGIKA PISANIA ---
   useEffect(() => {
-    if (!isInView) return;
+    if (!isTerminalInView) return;
 
     setCharsTyped(0);
 
@@ -111,7 +113,7 @@ const AboutMe = () => {
     }, 25); // Prędkość pisania
 
     return () => clearInterval(interval);
-  }, [isInView, totalLength]);
+  }, [isTerminalInView, totalLength]);
 
   const renderColoredCode = () => {
     let currentOffset = 0;
@@ -147,9 +149,9 @@ const AboutMe = () => {
     <section id="about-me" className="flex items-center justify-center py-20">
       <div className="max-w-4xl w-full px-4">
         <motion.h2
-          ref={ref}
+          ref={headerRef}
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl md:text-5xl font-bold text-center mb-12"
         >
@@ -158,8 +160,9 @@ const AboutMe = () => {
         </motion.h2>
 
         <motion.div
+          ref={terminalRef}
           initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isTerminalInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
           className=""
         >
@@ -179,7 +182,7 @@ const AboutMe = () => {
             </div>
 
             {/* Terminal Content */}
-            <div className="p-6 font-mono text-sm md:text-base bg-card/50 min-h-[470px] relative z-10 leading-relaxed">
+            <div className="p-6 font-mono text-sm md:text-base bg-card/50 min-h-[490px] relative z-10 leading-relaxed">
               <pre className="whitespace-pre-wrap">
                 {renderColoredCode()}
 

@@ -66,8 +66,14 @@ const itemVariants: Variants = {
 };
 
 const Skills = () => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const headerRef = React.useRef(null);
+  const isHeaderInView = useInView(headerRef, { once: true, amount: 0.5 });
+
+  const buttonsRef = React.useRef(null);
+  const isButtonsInView = useInView(buttonsRef, { once: true, amount: 0.5 });
+
+  const gridRef = React.useRef(null);
+  const isGridInView = useInView(gridRef, { once: true, amount: 0.2 });
 
   const [activeTab, setActiveTab] = useState("frontend");
   const activeSkils = tabs.find((tab) => tab.id === activeTab)?.skills || [];
@@ -76,9 +82,9 @@ const Skills = () => {
     <section id="skills" className="flex items-center justify-center py-20">
       <div className="max-w-4xl w-full px-4">
         <motion.h2
-          ref={ref}
+          ref={headerRef}
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl md:text-5xl font-bold text-center mb-12"
         >
@@ -86,38 +92,44 @@ const Skills = () => {
           <span className="text-primary text-glow-primary">Technologies</span>
         </motion.h2>
 
-        <div className="flex justify-center mb-12">
-          <div className="p-1.5 rounded-full bg-card/50 border border-border/50">
-            {tabs.map((tab) => (
-              <Button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                variant="skills"
-                className={` ${
-                  activeTab === tab.id
-                    ? "text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {activeTab === tab.id && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 bg-primary rounded-full glow-primary"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-                <span className="relative">{tab.label}</span>
-              </Button>
-            ))}
-          </div>
-        </div>
+        <motion.div 
+          ref={buttonsRef}
+          initial={{ opacity: 0, y: 0, scale: 0.8 }}
+          animate={isButtonsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 0.2, delay: 0.1 }}
+          className="flex justify-center mb-12">
+            <div className="p-1.5 rounded-full bg-card/50 border border-border/50">
+              {tabs.map((tab) => (
+                <Button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  variant="skills"
+                  className={` ${
+                    activeTab === tab.id
+                      ? "text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {activeTab === tab.id && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-primary rounded-full glow-primary"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative">{tab.label}</span>
+                </Button>
+              ))}
+            </div>
+          </motion.div>
         <div className="min-h-[310px]">
         <AnimatePresence mode="wait">
           <motion.div
+            ref={gridRef}
             key={activeTab}
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            animate={isGridInView ? "visible" : "hidden"}
             exit="exit"
             className="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-4"
           >
