@@ -1,6 +1,7 @@
 import AboutMe from "@/components/AboutMe";
 import Hero from "@/components/Hero";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
+import Skills from "@/components/Skills";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <main className="relative z-10">
         <Hero />
         <AboutMe />
+        <Skills />
       </main>
     </div>
 

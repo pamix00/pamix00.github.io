@@ -9,11 +9,12 @@ interface ButtonProps extends HTMLMotionProps<"button"> {
 
 const Button = ({ children, className = "", variant = "primary", ...props }: ButtonProps) => {
   
-  const baseStyle = "px-6 py-3 rounded-lg font-bold transition-colors duration-300 shadow-lg cursor-pointer";
+  const baseStyle = "rounded-lg font-bold transition-colors duration-300 shadow-lg cursor-pointer";
   
   const variants = {
-    primary: "glow-primary bg-primary text-primary-foreground",
-    outline: "border border-primary text-primary hover:bg-primary/10",
+    primary: "px-6 py-3 glow-primary bg-primary text-primary-foreground",
+    outline: "px-6 py-3 border border-primary text-primary hover:bg-primary/10",
+    skills: "relative px-6 py-2.5 text-sm rounded-full font-medium",
   };
 
   return (

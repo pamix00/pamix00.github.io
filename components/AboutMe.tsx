@@ -146,6 +146,7 @@ const AboutMe = () => {
     <section id="about-me" className="flex items-center justify-center py-20">
       <div className="max-w-4xl w-full px-4">
         <motion.h2
+          ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -156,7 +157,6 @@ const AboutMe = () => {
         </motion.h2>
 
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}

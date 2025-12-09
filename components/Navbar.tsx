@@ -47,7 +47,7 @@ const Navbar = () => {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 h-20 transition-colors duration-300 ${
           scrolled || isOpen
-            ? "bg-[#050505]/80 backdrop-blur-md"
+            ? "bg-background/80 backdrop-blur-md"
             : "bg-transparent"
         }`}
       >
@@ -65,7 +65,7 @@ const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleScrollTo(e, link.href)}
-                    className="text-sm font-medium text-white/70 hover:text-primary hover:text-glow-primary transition-colors duration-200 px-3 py-2 rounded-md"
+                    className="text-sm font-medium text-muted-foreground hover:text-foreground hover:text-primary hover:text-glow-primary transition-colors duration-200 px-3 py-2 rounded-md"
                   >
                     {link.name}
                   </a>
@@ -77,7 +77,7 @@ const Navbar = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-white hover:text-primary transition-colors p-2 focus:outline-none"
+                className="text-muted-foreground hover:text-foreground hover:text-primary transition-colors p-2 focus:outline-none"
                 aria-label="Toggle menu"
               >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -94,7 +94,7 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="md:hidden bg-[#050505]/80 backdrop-blur-md border-b border-white/5 overflow-hidden absolute top-20 left-0 right-0 shadow-2xl"
+              className="md:hidden bg-background/80 backdrop-blur-md border-b border-white/5 overflow-hidden absolute top-20 left-0 right-0 shadow-2xl"
             >
               <div className="px-4 pt-2 pb-8 space-y-2 flex flex-col items-center">
                 {navLinks.map((link) => (
@@ -102,7 +102,7 @@ const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleScrollTo(e, link.href)}
-                    className="block w-full text-center text-lg font-medium text-white/80 hover:text-primary hover:bg-white/5 px-3 py-4 rounded-lg transition-colors"
+                    className="block w-full text-center text-lg font-medium text-muted-foreground hover:text-foreground hover:text-primary hover:bg-white/5 px-3 py-4 rounded-lg transition-colors"
                   >
                     {link.name}
                   </a>
