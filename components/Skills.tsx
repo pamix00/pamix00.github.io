@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { AnimatePresence, motion, scale, useInView } from "framer-motion";
+import { AnimatePresence, motion, scale, useInView, type Variants } from "framer-motion";
 import { SiShadcnui } from "react-icons/si";
 import Button from "./ui/Button";
 
@@ -44,7 +44,7 @@ const tabs = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -55,7 +55,7 @@ const containerVariants = {
   exit: { opacity: 0, transition: { duration: 0.1 } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 30, opacity: 0, scale: 0.9 },
   visible: {
     y: 0,
