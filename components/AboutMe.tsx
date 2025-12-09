@@ -83,6 +83,7 @@ const AboutMe = () => {
       { text: "],\n", className: colors.default },
 
       { text: "  },", className: colors.default },
+      { text: "\n};", className: colors.default },
     ],
     []
   );
@@ -162,11 +163,11 @@ const AboutMe = () => {
           transition={{ duration: 0.8, delay: 0.1 }}
           className=""
         >
-          <div className="bg-[#0d0d0d] border border-gray-800 rounded-xl overflow-hidden shadow-2xl relative group">
-            <div className="absolute inset-0 bg-primary/20 blur-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 mix-blend-overlay" />
+          <div className="bg-transparent border border-border/50 hover:border-primary/20 transition-all duration-500 rounded-xl overflow-hidden shadow-2xl relative group">
+            <div className="absolute inset-0 bg-primary/10 blur-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 mix-blend-overlay" />
 
             {/* Terminal Header */}
-            <div className="bg-[#1a1a1a] px-4 py-3 flex items-center gap-2 border-b border-gray-800 relative z-10">
+            <div className="bg-[#1a1a1a] px-4 py-3 flex items-center gap-2 border-b border-border/50 relative z-10">
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -178,7 +179,7 @@ const AboutMe = () => {
             </div>
 
             {/* Terminal Content */}
-            <div className="p-6 font-mono text-sm md:text-base bg-[#0a0a0a] min-h-[470px] relative z-10 leading-relaxed">
+            <div className="p-6 font-mono text-sm md:text-base bg-card/50 min-h-[470px] relative z-10 leading-relaxed">
               <pre className="whitespace-pre-wrap">
                 {renderColoredCode()}
 
