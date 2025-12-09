@@ -4,7 +4,7 @@ import { motion, HTMLMotionProps } from "framer-motion";
 
 interface ButtonProps extends HTMLMotionProps<"button"> {
   children: React.ReactNode;
-  variant?: "primary" | "outline";
+  variant?: "primary" | "outline" | "skills";
 }
 
 const Button = ({ children, className = "", variant = "primary", ...props }: ButtonProps) => {
