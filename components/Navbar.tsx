@@ -32,7 +32,7 @@ const Navbar = () => {
 
     if (element) {
       if ((window as any).lenis) {
-        (window as any).lenis.scrollTo(element);
+        (window as any).lenis.scrollTo(element, { offset: -80 });
       } else {
         element.scrollIntoView({ behavior: "smooth" });
       }
