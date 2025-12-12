@@ -1,16 +1,21 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Logo = () => {
+  const pathname = usePathname();
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+    if (pathname === "/") {
+      e.preventDefault();
     
-    if ((window as any).lenis) {
-      (window as any).lenis.scrollTo(0);
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      if ((window as any).lenis) {
+        (window as any).lenis.scrollTo(0);
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     }
+    
   };
 
   return (

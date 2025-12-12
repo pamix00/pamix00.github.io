@@ -3,17 +3,19 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Logo from "@/components/ui/Logo";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { name: "About", href: "#about-me" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "/#about-me" },
+  { name: "Skills", href: "/#skills" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,19 +25,30 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string ) => {
-    e.preventDefault();
-    setIsOpen(false);
-
-    const targetId = href.replace("#", "");
-    const element = document.getElementById(targetId);
-
-    if (element) {
-      if ((window as any).lenis) {
-        (window as any).lenis.scrollTo(element, { offset: -80 });
-      } else {
-        element.scrollIntoView({ behavior: "smooth" });
+  useEffect(() => {
+      if (pathname === "/" && window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname);
       }
+    }, [pathname]);
+
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string ) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      setIsOpen(false);
+
+      const targetId = href.replace("/#", "");
+      const element = document.getElementById(targetId);
+
+      if (element) {
+        if ((window as any).lenis) {
+          (window as any).lenis.scrollTo(element, { offset: -80 });
+        } else {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+    else {
+      setIsOpen(false);
     }
   };
 
