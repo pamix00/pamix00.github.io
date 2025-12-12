@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { AnimatePresence, motion, scale, useInView, type Variants } from "framer-motion";
 import { SiShadcnui } from "react-icons/si";
 import Button from "./ui/Button";
@@ -66,13 +66,13 @@ const itemVariants: Variants = {
 };
 
 const Skills = () => {
-  const headerRef = React.useRef(null);
+  const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, amount: 0.5 });
 
-  const buttonsRef = React.useRef(null);
+  const buttonsRef = useRef(null);
   const isButtonsInView = useInView(buttonsRef, { once: true, amount: 0.5 });
 
-  const gridRef = React.useRef(null);
+  const gridRef = useRef(null);
   const isGridInView = useInView(gridRef, { once: true, amount: 0.2 });
 
   const [activeTab, setActiveTab] = useState("frontend");
