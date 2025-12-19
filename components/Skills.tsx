@@ -85,7 +85,7 @@ const Skills = () => {
           ref={headerRef}
           initial={{ opacity: 0, y: 20 }}
           animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="text-4xl md:text-5xl font-bold text-center mb-12"
         >
           <span className="text-white">Skills & </span>

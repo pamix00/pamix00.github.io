@@ -1,0 +1,12 @@
+<svg width="130" height="40" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .txt { font-family: monospace; font-weight: bold; font-size: 32px; letter-spacing: -2px; }
+    .blink { animation: b 1s infinite; }
+    @keyframes b { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  </style>
+
+  <text x="5" y="30" class="txt" fill="#00f0ff">&lt;</text>
+  <text x="25" y="30" class="txt" fill="#18181b" dx="0">PC</text>
+  <text x="65" y="30" class="txt blink" fill="#bc13fe" dx="-10">_</text>
+  <text x="88" y="30" class="txt" fill="#00f0ff" dx="-10">/&gt;</text>
+</svg>

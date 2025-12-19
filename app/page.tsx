@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <AboutMe />
         <Skills />
         <Projects />
+        <Contact />
       </main>
     </div>
 

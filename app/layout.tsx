@@ -4,6 +4,7 @@ import { Inter, Rajdhani } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import SmoothScroll from "../components/SmoothScroll";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,6 +44,41 @@ export default function RootLayout({
         <SmoothScroll />
         <Navbar />
         {children}
+        <Toaster
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: 'rgba(5, 5, 5, 0.5)',
+              backdropFilter: 'blur(5px)',
+              WebkitBackdropFilter: 'blur(5px)',
+              border: '1px solid #262626',
+              color: '#fff',
+              padding: '16px',
+              borderRadius: '12px',
+              fontSize: '14px',
+            },
+            
+            success: {
+              iconTheme: {
+                primary: '#00f0ff',
+                secondary: '#000',
+              },
+              style: {
+                border: '1px solid #00f0ff',
+              }
+            },
+
+            error: {
+              iconTheme: {
+                primary: '#ef4444',
+                secondary: '#000',
+              },
+              style: {
+                border: '1px solid #ef4444',
+              }
+            },
+          }}
+        />
       </body>
     </html>
   );

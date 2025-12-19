@@ -26,7 +26,7 @@ const itemVariants: Variants = {
     y: 0,
     //filter: "blur(0px)",
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       ease: "easeOut",
     },
   },
@@ -93,8 +93,8 @@ const Hero = () => {
             applications using{" "}
             <span className="text-secondary text-glow-secondary">Next.js</span>,{" "}
             <span className="text-secondary text-glow-secondary">Vue.js</span>,{" "}
-            <span className="text-secondary text-glow-secondary">.NET</span> and{" "}
-            <span className="text-secondary text-glow-secondary">Node.js</span>.
+            <span className="text-secondary text-glow-secondary">Node.js</span> and{" "}
+            <span className="text-secondary text-glow-secondary">.NET</span>.
           </motion.p>
 
           <motion.div
