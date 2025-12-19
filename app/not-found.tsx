@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 text-center">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
       
       <motion.h1
         initial={{ opacity: 0, y: -20, scale: 0.8 }}

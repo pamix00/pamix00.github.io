@@ -5,6 +5,8 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import SmoothScroll from "../components/SmoothScroll";
 import { Toaster } from "react-hot-toast";
+import Footer from "@/components/Footer";
+import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,11 +41,17 @@ export default function RootLayout({
         <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
+        <div className="fixed inset-0 z-0 pointer-events-none" >
+          <ParticlesBackground /> 
+        </div>
         <SmoothScroll />
         <Navbar />
-        {children}
+        <main className="grow flex flex-col relative z-10">
+          {children}
+        </main>
+        <Footer />
         <Toaster
           position="bottom-center"
           toastOptions={{
