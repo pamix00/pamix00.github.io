@@ -13,7 +13,7 @@ export const sendEmail = async (formData: FormData) => {
     return { error: "Brak wymaganych danych" };
   }
 
-  const logoURL = `${process.env.FRONTEND_URL}/logo.svg`;
+  const logoURL = `${process.env.FRONTEND_URL}/logo_black.png`;
 
   try {
     await resend.emails.send({
@@ -34,15 +34,6 @@ export const sendEmail = async (formData: FormData) => {
             img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
             table { border-collapse: collapse !important; }
             body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
-            
-            /* Animacja migania dla klientów, którzy to wspierają (Apple Mail, nowe Outlooki) */
-            @keyframes blink {
-              0%, 100% { opacity: 1; }
-              50% { opacity: 0; }
-            }
-            .cursor-blink {
-              animation: blink 1s infinite;
-            }
           </style>
         </head>
         <body style="margin: 0; padding: 0; background-color: #f4f4f5; font-family: 'Courier New', Courier, monospace;">
