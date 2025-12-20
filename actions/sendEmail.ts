@@ -50,7 +50,7 @@ export const sendEmail = async (formData: FormData) => {
                         <tr>
                           <td align="center" style="padding-bottom: 30px; border-bottom: 1px solid #e4e4e7;">
                             
-                            <img src="${logoURL}" alt="Logo" width="130" height="40" 
+                            <img src="${logoURL}" alt="Logo" width="150" height="60" 
                             style="display: block; border: 0; outline: none; text-decoration: none;"
                             />
                             <h1 style="margin: 20px 0 0 0; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 24px; color: #18181b; font-weight: 700;">New message</h1>
