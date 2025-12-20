@@ -17,8 +17,8 @@ const projects = [
     title: "Investment Calculator",
     description: "Interactive financial tool that visualizes the power of compound interest with real-time dynamic charts and data analysis.",
     image: "/projects/investment-calculator.webp",
-    tags: ["Next.js", "React", "Chart.js", "Tailwind CSS", "TypeScript", "Shadcn UI"],
-    liveUrl: "https://patrykczech.me/investment-calculator/",
+    tags: ["Next.js", "React", "Recharts", "Tailwind CSS", "TypeScript", "Shadcn UI"],
+    liveUrl: "https://kalkulator.patrykczech.me/",
     repoUrl: "https://github.com/pamix00/investment-calculator",
   },
   {
