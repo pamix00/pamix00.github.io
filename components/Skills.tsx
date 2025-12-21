@@ -26,6 +26,7 @@ const tabs = [
     label: "Backend",
     skills: [
       { name: "Node.js", iconClass: "devicon-nodejs-plain-wordmark", color: "#339933" },
+      { name: "Express.js", iconClass: "devicon-express-original", color: "#E3E1E1" },
       { name: ".NET", iconClass: "devicon-dotnetcore-plain", color: "#512BD4" },
       { name: "MongoDB", iconClass: "devicon-mongodb-plain", color: "#47A248" },
       { name: "MySQL", iconClass: "devicon-mysql-plain", color: "#4479A1" },
