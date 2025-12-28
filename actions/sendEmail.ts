@@ -1,17 +1,30 @@
 "use server";
 import { Resend } from "resend";
+import sanitizeHtml from "sanitize-html";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const clean = (text: string) => {
+  return sanitizeHtml(text || "", {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+};
+
 export const sendEmail = async (formData: FormData) => {
-  const senderEmail = formData.get("senderEmail");
-  const message = formData.get("message");
-  const name = formData.get("name");
-  const subject = formData.get("subject");
+  const senderEmail = formData.get("senderEmail")?.toString().trim() || "";
+  const message = formData.get("message")?.toString().trim() || "";
+  const name = formData.get("name")?.toString().trim() || "";
+  const subject = formData.get("subject")?.toString().trim() || "";
 
   if (!senderEmail || !message) {
-    return { error: "Brak wymaganych danych" };
+    return { error: "Missing required fields" };
   }
+
+  const cleanSenderEmail = clean(senderEmail);
+  const cleanMessage = clean(message);
+  const cleanName =  clean(name);
+  const cleanSubject = clean(subject);
 
   const logoURL = `${process.env.FRONTEND_URL}/logo_black.png`;
 
@@ -19,8 +32,8 @@ export const sendEmail = async (formData: FormData) => {
     await resend.emails.send({
       from: "Contact - Patryk Czech <noreply@patrykczech.me>",
       to: "patrykczech00@gmail.com",
-      replyTo: senderEmail as string,
-      subject: `${subject} - Patryk Czech`,
+      replyTo: cleanSenderEmail,
+      subject: `${cleanSubject} - Patryk Czech`,
       html: `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml">
@@ -64,7 +77,7 @@ export const sendEmail = async (formData: FormData) => {
                           <td style="padding-bottom: 5px; color: #71717a; font-size: 12px; text-transform: uppercase; font-weight: 600;">From</td>
                         </tr>
                         <tr>
-                          <td style="padding-bottom: 20px; color: #18181b; font-size: 16px; font-weight: 500;">${name}</td>
+                          <td style="padding-bottom: 20px; color: #18181b; font-size: 16px; font-weight: 500;">${cleanName}</td>
                         </tr>
 
                         <tr>
@@ -72,7 +85,7 @@ export const sendEmail = async (formData: FormData) => {
                         </tr>
                         <tr>
                           <td style="padding-bottom: 20px;">
-                            <a href="mailto:${senderEmail}" style="color: #2563eb; text-decoration: none; font-size: 16px; font-weight: 500;">${senderEmail}</a>
+                            <a href="mailto:${cleanSenderEmail}" style="color: #2563eb; text-decoration: none; font-size: 16px; font-weight: 500;">${cleanSenderEmail}</a>
                           </td>
                         </tr>
 
@@ -80,7 +93,7 @@ export const sendEmail = async (formData: FormData) => {
                           <td style="padding-bottom: 5px; color: #71717a; font-size: 12px; text-transform: uppercase; font-weight: 600;">Subject</td>
                         </tr>
                         <tr>
-                          <td style="padding-bottom: 20px; color: #18181b; font-size: 16px; font-weight: 500;">${subject || "No subject"}</td>
+                          <td style="padding-bottom: 20px; color: #18181b; font-size: 16px; font-weight: 500;">${cleanSubject || "No subject"}</td>
                         </tr>
 
                         <tr>
@@ -88,7 +101,7 @@ export const sendEmail = async (formData: FormData) => {
                         </tr>
                         <tr>
                           <td>
-                            <div style="background-color: #fafafa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 20px; color: #3f3f46; font-size: 15px; line-height: 1.6; white-space: pre-wrap;">${message}</div>
+                            <div style="background-color: #fafafa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 20px; color: #3f3f46; font-size: 15px; line-height: 1.6; white-space: pre-wrap;">${cleanMessage}</div>
                           </td>
                         </tr>
                         

@@ -41,6 +41,11 @@ const Contact = () => {
         if (!subject) { toast.error("Please enter a subject.", {id: 'contact-error'}); return; }
         if (!message) { toast.error("Please enter your message.", {id: 'contact-error'}); return; }
 
+        formData.set("name", name);
+        formData.set("senderEmail", senderEmail);
+        formData.set("subject", subject);
+        formData.set("message", message);
+
         setPending(true);
 
         await new Promise(resolve => setTimeout(resolve, 200));
